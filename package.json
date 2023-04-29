@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://cleverakanimoh.github.io/react-portfolio/",
+  "homepage":"https://cleverakanimoh.github.io/portfolio/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -23,8 +23,8 @@
     "react-on-screen": "^2.1.1",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
