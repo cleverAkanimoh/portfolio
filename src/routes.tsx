@@ -10,7 +10,7 @@ import Projects, {loader as projectsLoader} from "./Pages/Projects";
 import Skills from "./Pages/Skills";
 import ErrorPage from "./Pages/Error";
 
-export default  <Route path="" element={<Layout />}>
+export default  <Route path="portfolio" element={<Layout />}>
     <Route index element={<Home />} />
     <Route path="about" element={<About />} />
     <Route path="skills" element={<Skills />} />
