@@ -1,5 +1,4 @@
 import {
-  Route,
   RouterProvider,
   createHashRouter,
   createRoutesFromElements
@@ -7,10 +6,6 @@ import {
 
 import routes from "./routes";
 
-const router = createHashRouter(
-  createRoutesFromElements(
-    routes
-  )
-)
+const router = createHashRouter(createRoutesFromElements(routes))
 
 export default () => <RouterProvider router={router} />
