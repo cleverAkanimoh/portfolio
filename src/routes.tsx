@@ -14,27 +14,28 @@ export default (
     <>
         <Route path="portfolio" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route 
+            <Route
                 path="about"
                 element={<About />}
             />
-            
-            <Route 
+
+            <Route
                 path="skills"
                 element={<Skills />}
             />
-            
+
             <Route
                 path="projects"
                 element={<Projects />}
                 errorElement={<ErrorPage />}
                 loader={projectsLoader} />
-                
+
             <Route
                 path="connect"
                 element={<Contact />}
             />
 
+            <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="*" element={<NotFound />} />
     </>
