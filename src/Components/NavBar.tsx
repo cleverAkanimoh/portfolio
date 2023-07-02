@@ -39,7 +39,8 @@ export default function NavBar() {
                     <span>
                         <img src={logo} alt="logo" className="w-[30px] sm:w-[40px] rounded-lg" />
                         <Link
-                            to="/" onClick={() => setMenuClicked(false)}
+                            to="."
+                            onClick={() => setMenuClicked(false)}
                             className="portfolio-logo-style">Portfolio <span className="portfolio-span-style"></span></Link>
                     </span>
                     <button className={`${menuClicked ? "bg-gradient-style" : ""} other-menu-btn-style`} onClick={toggleMenu}>
