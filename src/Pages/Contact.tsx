@@ -9,7 +9,7 @@ export default function Contact() {
 
   const [messageText, setMessageText] = useState('Message goes here...')
 
-  useWindowTitle('Connect | Portfolio')
+  useWindowTitle('Send me a work email | Portfolio')
 
   const handleChange = (event: any) => {
     event.preventDefault()

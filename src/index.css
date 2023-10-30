@@ -23,19 +23,19 @@
       
       /* Handle on hover */
       ::-webkit-scrollbar-thumb:hover {
-        @apply bg-gray
+        @apply bg-gray;
       }
     .nav-style {
-        @apply w-full transition-all flex items-center justify-center absolute top-0 left-0 z-30
+        @apply w-full transition-all duration-300 flex items-center justify-center absolute top-0 left-0 z-30;
     }
     .fixed-nav-style {
-        @apply fixed top-0 left-0 bg-black bg-opacity-70 sm:shadow-md h-20 py-2
+        @apply fixed bg-black bg-opacity-80 backdrop-blur sm:shadow-md;
     }
     .nav-div-style {
-        @apply w-full h-[80px] sm:h-[95px] flex flex-col max-w-[1150px] sm:flex-row text-white
+        @apply w-[97%] h-[80px] sm:h-[90px] flex flex-col sm:flex-row items-center justify-between container text-white;
     }
     .nav-div-div-style {
-        @apply flex items-center justify-between w-full p-3 z-20
+        @apply flex items-center justify-between w-full sm:w-fit p-3 z-20;
     }
     .portfolio-logo-style {
         @apply font-bold sm:text-[1.2rem] lg:text-[1.25rem] font-sans hover:text-opacity-80 hover:border-b-4
@@ -50,13 +50,13 @@
         @apply text-2xl p-2 rounded transition-all duration-500 sm:hidden
     }
     .animate-menu-list-show-style {
-        @apply h-auto translate-y-[0] opacity-100
+        @apply opacity-100 left-0
     }
     .animate-menu-list-hide-style {
-        @apply translate-y-[-100vh] opacity-5 sm:transition-none sm:translate-y-[0] sm:opacity-100
+        @apply -left-full opacity-5 sm:left-0 sm:opacity-100
     }
     .other-animate-list-style {
-        @apply h-auto transition-all sm:flex items-center text-xl font-sofia p-3 z-10 bg-black bg-opacity-70 sm:bg-transparent duration-500
+        @apply transition-all sm:transition-none w-full flex flex-col sm:flex-row gap-3 fixed sm:relative sm:top-0 sm:w-fit sm:gap-4 sm:bg-transparent top-[80.5px] text-xl font-sofia p-3 z-10 bg-black bg-opacity-80 duration-300;
     }
     .nav-list-style {
         @apply sm:mx-2 lg:mx-3 capitalize text-[1.05rem]
@@ -69,23 +69,20 @@
         @apply w-full grid items-center place-items-center text-center text-white min-h-screen
     }
     .header-section-style {
-        @apply w-[80%] min-w-[300px] max-w-[600px] h-screen flex flex-col items-center justify-center
+        @apply w-[80%] min-w-[300px] max-w-[600px] h-screen flex flex-col items-center justify-center gap-4
     }
 
     .header-span1-style {
         @apply rounded text-sm p-1 bg-gradient-to-tr from-saddle-brown to-yellow font-sans
     }
-    .header-h1-style {
-        @apply text-[2.55rem] font-sofia my-4 font-bold
-    }
     .header-div-style {
-        @apply w-full text-gray text-[1rem] flex font-sofia px-4 sm:px-6 lg:px-8
+        @apply w-full text-gray text-base sm:text-lg flex gap-3 font-sofia
     }
     .header-div-link1-style {
-        @apply w-fit mr-3 flex items-center justify-center hover:text-chocolate hover:underline transition-all
+        @apply w-fit mr-3 flex items-center justify-center hover:text-yellow hover:underline transition-all
     }
     .header-div-link2-style {
-        @apply w-fit hover:text-chocolate hover:underline transition-all
+        @apply w-fit hover:text-yellow hover:underline transition-all
     }
 
     .section-style {
@@ -103,22 +100,22 @@
         @apply p-8 w-full flex flex-col items-center justify-center mt-2
     }
     .footer-div-style {
-        @apply w-[97%] container h-[150px] px-4 flex flex-col items-center justify-center sm:justify-between sm:flex-row
+        @apply w-[97%] container px-4 flex flex-col items-center justify-center sm:justify-between sm:flex-row gap-2
     }
     .footer-ul1-style {
-        @apply capitalize w-fit h-[100px] flex flex-col justify-center items-start
+        @apply capitalize w-fit h-[100px] flex flex-col justify-center items-start gap-2
     }
     .footer-ul1-li1-style {
         @apply flex justify-center text-left
     }
     .footer-ul1-li2-style {
-        @apply flex items-center justify-center text-left
+        @apply flex items-center gap-2 text-xl
     }
     .footer-ul2-li1-style {
         @apply opacity-60 hover:opacity-100 mr-4 hover:text-white
     }
     .footer-samp1-style {
-        @apply text-center w-[100%] max-w-[500px] py-4 px-1 border-t-[1px] mt-5
+        @apply text-center w-[98%] max-w-[500px] py-4 px-1 mt-5
     }
 
     .loading-div-style {

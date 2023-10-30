@@ -1,6 +1,7 @@
 import { socials } from "../lib/socials"
 import { BsHouse, BsPhone } from 'react-icons/bs'
 import { FontAwesomeIcon } from "fontawesom"
+import { MdEditLocation } from "react-icons/md";
 
 export default function Footer() {
     const year = new Date().getFullYear()
@@ -10,7 +11,7 @@ export default function Footer() {
             key={id}
             className="footer-ul2-li1-style"
         >
-            <a href={url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={icon} className="text-[1.7rem] sm:text-[1.55rem]"/></a></li>
+            <a href={url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={icon} className="text-[1.7rem] sm:text-[1.55rem]" /></a></li>
     ))
 
     return (
@@ -18,8 +19,9 @@ export default function Footer() {
             <div className="footer-div-style container">
 
                 <ul className="footer-ul1-style">
-                    <li className="footer-ul1-li1-style"><BsHouse /> <pre className="ml-1">uyo, akwa ibom state</pre></li>
-                    <li className="footer-ul1-li2-style"><BsPhone /> <pre className="ml-1">08113530038</pre></li>
+                    <h1 className="flex items-center gap-2 font-bold text-2xl font-sans"><MdEditLocation /> <span>Location</span></h1>
+                    <li className="footer-ul1-li1-style"><BsHouse /> <span className="ml-1">uyo, akwa ibom state</span></li>
+                    <li className="footer-ul1-li1-style"><BsPhone /> <span className="ml-1">08113530038</span></li>
                 </ul>
 
                 <ul className="flex justify-center">{displaySocials}</ul>

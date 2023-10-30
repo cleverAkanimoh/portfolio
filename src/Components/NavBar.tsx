@@ -33,8 +33,8 @@ export default function NavBar() {
     ))
 
     return (
-        <nav className={`nav-style ${scrolled ? 'fixed-nav-style p-2' : ''}`}>
-            <div className="nav-div-style container">
+        <nav className={`nav-style ${scrolled ? 'fixed-nav-style py-1' : 'bg-black sm:bg-transparent'}`}>
+            <div className="nav-div-style">
                 <div className="nav-div-div-style">
                     <span>
                         <img src={logo} alt="logo" className="w-[30px] sm:w-[40px] rounded-lg" />

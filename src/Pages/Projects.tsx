@@ -13,7 +13,7 @@ export function loader() {
 
 export default function Projects() {
 
-  useWindowTitle('Projects | Portfolio')
+  useWindowTitle('View all of my projects | Clever Akanimoh')
 
   const fetchRepoPromise: any = useLoaderData()
 
