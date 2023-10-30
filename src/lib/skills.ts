@@ -3,7 +3,7 @@ export const frontend = ['HTML', 'CSS', 'JQUERY', 'BOOTSTRAP', 'TAILWINDCSS', 'U
 
 export const backend = ['EXPRESS.JS', 'DJANGO', 'restAPI']
 
-export const languages = ['PYTHON', 'JAVASCRIPT', 'TYPESCRIPT', 'R']
+export const languages = ['PYTHON', 'JAVASCRIPT', 'ty', 'R']
 
 export const libraries = ['JQUERY', 'BOOTSTRAP', 'REACT-ROUTER', 'REACT-ICONS', 'REDUX']
 
