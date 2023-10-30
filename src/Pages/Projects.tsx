@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, animateSection as s } from '../ts/framerAnimation';
-import fetchRepositories from '../ts/api';
-import Loading from '../Components/Loading';
+import { animateHeader as h, animateSection as s } from '../lib/framerAnimation';
+import fetchRepositories from '../lib/fetchRepositories';
+import Loading from '../components/Loading';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useDisplayRepos from '../Hooks/useDisplayRepos';
 

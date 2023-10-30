@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
-import Pagination from '../Components/Pagination'
+import Pagination from '../components/Pagination'
 
 export default function useDisplayRepos(repos: any) {
     const [searchParams, setSearchParams] = useSearchParams()

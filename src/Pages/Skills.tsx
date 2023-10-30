@@ -1,7 +1,7 @@
 import { motion as m, useScroll, useTransform } from 'framer-motion'
-import { animateHeader as h, animateSection as s } from '../ts/framerAnimation';
+import { animateHeader as h, animateSection as s } from '../lib/framerAnimation';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
-import * as skills from '../ts/skills';
+import * as skills from '../lib/skills';
 
 export default function Skills() {
   const { scrollYProgress } = useScroll()

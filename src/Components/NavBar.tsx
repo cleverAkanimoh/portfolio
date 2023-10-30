@@ -17,7 +17,7 @@ export default function NavBar() {
 
     const toggleMenu = useCallback(() => setMenuClicked(prevState => !prevState), [])
 
-    const onScrolling = useCallback(() => window.scrollY > 60 ? setScrolled(true) : setScrolled(false), [])
+    const onScrolling = useCallback(() => window.scrollY > 70 ? setScrolled(true) : setScrolled(false), [])
 
     useEffect(() => {
         window.onscroll = onScrolling
@@ -33,8 +33,8 @@ export default function NavBar() {
     ))
 
     return (
-        <nav className={`nav-style ${scrolled ? 'fixed-nav-style' : ''}`}>
-            <div className="nav-div-style">
+        <nav className={`nav-style ${scrolled ? 'fixed-nav-style p-2' : ''}`}>
+            <div className="nav-div-style container">
                 <div className="nav-div-div-style">
                     <span>
                         <img src={logo} alt="logo" className="w-[30px] sm:w-[40px] rounded-lg" />

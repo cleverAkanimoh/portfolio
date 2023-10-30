@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, animateHeader as h1, container, item } from '../ts/framerAnimation';
+import { animateHeader as h, animateHeader as h1, container, item } from '../lib/framerAnimation';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useWordCount from '../Hooks/useWordCount';
 // import { handleChange } from '../Hooks/handleChange';

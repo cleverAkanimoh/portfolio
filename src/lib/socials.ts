@@ -4,7 +4,7 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { SocialsProps } from "./portfolio.types";
+import type { SocialsProps } from "./portfolio.types";
 
 export const socials: SocialsProps = [
   {

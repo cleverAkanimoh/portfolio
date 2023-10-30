@@ -1,18 +1,18 @@
 import { Route } from "react-router-dom";
 
-import Layout from "./Components/Layout";
+import Layout from "./components/Layout";
 
-import About from "./Pages/About";
-import Contact from "./Pages/Contact";
-import Home from "./Pages/Home";
-import NotFound from "./Pages/NotFound";
-import Projects, { loader as projectsLoader } from "./Pages/Projects";
-import Skills from "./Pages/Skills";
-import ErrorPage from "./Pages/Error";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import Projects, { loader as projectsLoader } from "./pages/Projects";
+import Skills from "./pages/Skills";
+import ErrorPage from "./pages/Error";
 
 export default (
     <>
-        <Route path="portfolio" element={<Layout />}>
+        <Route path="" element={<Layout />}>
             <Route index element={<Home />} />
             <Route
                 path="about"

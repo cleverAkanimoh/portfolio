@@ -92,7 +92,7 @@
         @apply grid items-center place-items-center px-3
     }
     .article-style {
-        @apply min-h-screen min-w-[300px] w-[100%] max-w-[1150px] py-9 flex flex-col items-start justify-center
+        @apply min-h-screen container w-[97%] py-9 flex flex-col items-start justify-center
     }
 
     .article-div1-style {
@@ -100,10 +100,10 @@
     }
 
     .footer-style {
-        @apply p-[2rem] w-full flex flex-col items-center justify-center mt-2
+        @apply p-8 w-full flex flex-col items-center justify-center mt-2
     }
     .footer-div-style {
-        @apply min-w-[300px] w-[99%] max-w-[900px] h-[150px] flex flex-col items-center justify-center sm:justify-between sm:flex-row
+        @apply w-[97%] container h-[150px] px-4 flex flex-col items-center justify-center sm:justify-between sm:flex-row
     }
     .footer-ul1-style {
         @apply capitalize w-fit h-[100px] flex flex-col justify-center items-start
@@ -128,7 +128,7 @@
         @apply w-[55px]
     }
     .loading-h2-style {
-        @apply md:text-[1.1rem] text-[1rem] font-serif animate-pulse
+        @apply md:text-[1.1rem] text-base font-serif animate-pulse
     }
 
     .skill-container-div {
@@ -156,7 +156,7 @@
 }
 
 body {
-    overflow-x: hidden;
+    @apply scroll-smooth overflow-x-hidden;
 }
 
 * {
@@ -186,7 +186,7 @@ body {
    } 
 }
 
-.wave{
+.wave {
     display: inline-block;
     animation: wave 0.5s infinite alternate;
 }

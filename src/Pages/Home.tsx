@@ -2,14 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import { BsArrowRight } from 'react-icons/bs'
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, animateSection as s, animateH1 as h1 } from '../ts/framerAnimation';
+import { animateHeader as h, animateSection as s, animateH1 as h1 } from '../lib/framerAnimation';
 import TrackVisibility from 'react-on-screen';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useTick from '../Hooks/useTick';
 
 export default function Home() {
 
-  const skills = ['web developer ', 'data analyst ', 'product designer ', 'Freelancer ']
+  const skills = ['web developer ', 'data analyst ', 'product designer ', 'Freelancer']
   const typingSpeed = 2000
   const deleteSpeed = 500
 

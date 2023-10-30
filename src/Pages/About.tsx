@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, animateSection as s, animateH1 as h1 } from '../ts/framerAnimation';
+import { animateHeader as h, animateSection as s, animateH1 as h1 } from '../lib/framerAnimation';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
-import { backend, dataAnalysis, frontend, productDesign } from '../ts/skills';
+import { backend, dataAnalysis, frontend, productDesign } from '../lib/skills';
 import image from '../assets/images/crushpic.png'
 
 export default function About() {
