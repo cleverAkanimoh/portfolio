@@ -1,4 +1,4 @@
-export { default as fetchRepositories } from "./fetchRepositories";
+export { default as projectsArr } from "./projects";
 
 export { socials } from "./socials";
 

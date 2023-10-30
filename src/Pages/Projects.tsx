@@ -1,21 +1,13 @@
-import { Suspense } from 'react';
-import { Await, defer, useLoaderData } from 'react-router-dom';
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, animateSection as s } from '../lib/framerAnimation';
-import fetchRepositories from '../lib/fetchRepositories';
-import Loading from '../components/Loading';
+import { animateHeader as h, projectsArr, animateSection as s } from '../lib';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useDisplayRepos from '../Hooks/useDisplayRepos';
-
-export function loader() {
-  return defer({ repos: fetchRepositories() })
-}
 
 export default function Projects() {
 
   useWindowTitle('View all of my projects | Clever Akanimoh')
 
-  const fetchRepoPromise: any = useLoaderData()
+  const diplayRepos = useDisplayRepos(projectsArr)
 
   return (
     <>
@@ -38,11 +30,9 @@ export default function Projects() {
 
       <section className="section-style">
         <article className='article-style'>
-          <Suspense fallback={<Loading />}>
-            <Await resolve={fetchRepoPromise.repos}>{useDisplayRepos}</Await>
-          </Suspense>
-      </article>
-    </section>
+          {diplayRepos}
+        </article>
+      </section>
     </>
   );
 }

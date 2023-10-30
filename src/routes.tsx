@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import Projects, { loader as projectsLoader } from "./pages/Projects";
+import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import ErrorPage from "./pages/Error";
 
@@ -14,6 +14,7 @@ export default (
     <>
         <Route path="" element={<Layout />}>
             <Route index element={<Home />} />
+            
             <Route
                 path="about"
                 element={<About />}
@@ -28,7 +29,7 @@ export default (
                 path="projects"
                 element={<Projects />}
                 errorElement={<ErrorPage />}
-                loader={projectsLoader} />
+                 />
 
             <Route
                 path="connect"

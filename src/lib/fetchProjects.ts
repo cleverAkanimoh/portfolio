@@ -1,7 +1,7 @@
 import sleep from "../Hooks/useDelay";
 
 const fetchRepositories = async () => {
-  const url = "https://api.github.com/users/cleverAkanimoh/repos";
+  const url = "./projects.json";
   await sleep(1000);
   
   const res = await fetch(url);
