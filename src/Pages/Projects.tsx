@@ -1,13 +1,14 @@
 import { motion as m } from 'framer-motion'
 import { animateHeader as h, projectsArr, animateSection as s } from '../lib';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
-import useDisplayRepos from '../Hooks/useDisplayRepos';
+import DisplayRepos from '../components/DisplayRepos';
+// import { Await } from 'react-router-dom';
+import { Suspense } from 'react';
+import Loading from '../components/Loading';
 
 export default function Projects() {
 
   useWindowTitle('View all of my projects | Clever Akanimoh')
-
-  const diplayRepos = useDisplayRepos(projectsArr)
 
   return (
     <>
@@ -30,7 +31,10 @@ export default function Projects() {
 
       <section className="section-style">
         <article className='article-style'>
-          {diplayRepos}
+          <Suspense fallback={<Loading />}>
+            {/* <Await children={<DisplayRepos repos={projectsArr} />} resolve={undefined} /> */}
+            <DisplayRepos repos={projectsArr} />
+          </Suspense>
         </article>
       </section>
     </>

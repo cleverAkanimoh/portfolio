@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
-import Pagination from '../components/Pagination'
-import { languages } from '../lib'
+import Pagination from './Pagination'
 
-export default function useDisplayRepos(repos: any) {
+export default function DisplayRepos(repos: any) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -29,11 +28,12 @@ export default function useDisplayRepos(repos: any) {
     const languageFilter = searchParams.get("language");
 
     const displayedRepos = languageFilter
-        ? repos.filter((r: any) => r.language === languageFilter)
+        ? repos.filter((r:any) => r.language === languageFilter)
         : shownPosts
 
-    console.log(repos.language);
+    console.log(repos);
 
+    // const languages = repos.language.reduce(() => { }, 0)
 
     const repoElements = displayedRepos.map((repo: any) => (
         <div key={repo.id} className="w-[99%] min-w-[300px]: max-w-[350px] min-h-[400px] p-2" >
@@ -64,15 +64,18 @@ export default function useDisplayRepos(repos: any) {
     return (
         <div className="w-full flex flex-col items-center justify-center">
             <div className="w-full p-3 h-fit inline sm:flex justify-center">
-                {
 
-                    languages.map((lang, index) => (
-                        <button
-                            key={index}
-                            onClick={() => handleFilterChange(`language`, `${lang.toLowerCase()}`)}
-                            className="capitalize text-sm hover:text-chocolate border rounded px-2 py-1 mx-1 my-2"
-                        >{lang}</button>))
-                }
+                <select name="language" id="language">
+                    {
+                        repos.map((r: any) => (
+                            <option
+                                key={r.id}
+                                value={r.language}
+                                onClick={() => handleFilterChange(`language`, `${r.language}`)}
+                                className="capitalize text-sm hover:text-chocolate border rounded px-2 py-1 mx-1 my-2"
+                            >{r.language}</option>))
+                    }
+                </select>
 
                 {languageFilter ? (
                     <button onClick={() => handleFilterChange("language", null)}

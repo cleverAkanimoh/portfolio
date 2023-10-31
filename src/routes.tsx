@@ -14,7 +14,7 @@ export default (
     <>
         <Route path="" element={<Layout />}>
             <Route index element={<Home />} />
-            
+
             <Route
                 path="about"
                 element={<About />}
@@ -29,15 +29,13 @@ export default (
                 path="projects"
                 element={<Projects />}
                 errorElement={<ErrorPage />}
-                 />
+            />
 
             <Route
                 path="connect"
                 element={<Contact />}
             />
-
             <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
     </>
 )
