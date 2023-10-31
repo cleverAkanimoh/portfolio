@@ -8,4 +8,5 @@ import routes from "./routes";
 
 const router = createBrowserRouter(createRoutesFromElements(routes))
 
-export default () => <RouterProvider router={router} />
+const App = () => <RouterProvider router={router} />
+export default App;
