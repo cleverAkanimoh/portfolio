@@ -35,7 +35,7 @@ const Pagination = ({
         <button
           key={i}
           onClick={() => handleButtonClick(page)}
-          className={`${page === currentPage ? 'text-chocolate bg-transparent' : ''}hover:text-brown transition-all duration-500 border rounded-md p-1`} >{page}</button>
+          className={`${page === currentPage ? 'text-chocolate bg-transparent' : ''}hover:text-brown transition-all duration-500 border rounded-md p-1`}>{page}</button>
       )
     }
   })
@@ -81,23 +81,26 @@ const Pagination = ({
   }
 
   return (
-    <div className="text-white h-16 border flex items-center justify-center gap-2 my-5">
-      <button
-        onClick={() => handlePrevClick()}
-        className={`${currentPage === 1 ? 'opacity-40' : 'opacity-100'}`}
-        disabled={currentPage === 1}
-      >{"<<<"}</button>
-      <div className="flex flex-col items-center justify-center gap-3">
+    <div className="text-white border flex flex-col items-center justify-center gap-2 my-5">
+      <div>
+
+        <button
+          onClick={() => handlePrevClick()}
+          className={`${currentPage === 1 ? 'opacity-40' : 'opacity-100'}`}
+          disabled={currentPage === 1}
+        >{"<<<"}</button>
         <div className="flex gap-2 ">{renderPaginationButtons}</div>
-        <div>
-          <input type="text" value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-white hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
-        </div>
+        <button
+          onClick={() => handleNextClick()}
+          className={`${currentPage === lastPage ? 'opacity-40' : 'opacity-100'}`}
+          disabled={currentPage === lastPage}
+        >{">>>"}</button>
+
       </div>
-      <button
-        onClick={() => handleNextClick()}
-        className={`${currentPage === lastPage ? 'opacity-40' : 'opacity-100'}`}
-        disabled={currentPage === lastPage}
-      >{">>>"}</button>
+
+      <div>
+        <input type="text" value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-white hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
+      </div>
     </div>
   )
 }
