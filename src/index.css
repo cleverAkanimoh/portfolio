@@ -69,20 +69,17 @@
         @apply w-full grid items-center place-items-center text-center text-white min-h-screen
     }
     .header-section-style {
-        @apply w-[80%] min-w-[300px] max-w-[600px] h-screen flex flex-col items-center justify-center gap-4
+        @apply w-[96%] min-w-[300px] max-w-[550px] h-screen flex flex-col items-center justify-center gap-4
     }
 
     .header-span1-style {
-        @apply rounded text-sm p-1 bg-gradient-to-tr from-saddle-brown to-yellow font-sans
+        @apply rounded-md text-sm p-1 bg-gradient-to-tr from-saddle-brown to-yellow font-sans
     }
     .header-div-style {
-        @apply w-full text-gray text-base sm:text-lg flex gap-3 font-sofia
+        @apply w-fit text-gray text-base sm:text-lg flex gap-3 font-sofia
     }
     .header-div-link1-style {
         @apply w-fit mr-3 flex items-center justify-center hover:text-yellow hover:underline transition-all
-    }
-    .header-div-link2-style {
-        @apply w-fit hover:text-yellow hover:underline transition-all
     }
 
     .section-style {

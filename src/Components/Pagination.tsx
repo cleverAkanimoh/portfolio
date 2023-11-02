@@ -25,6 +25,7 @@ const Pagination = ({
 
   let pages: any[] = []
   const lastPage = Math.ceil(totalPosts / postPerPage)
+
   for (let i = 1; i <= lastPage; i++) {
     pages.push(i)
   }
@@ -81,15 +82,17 @@ const Pagination = ({
   }
 
   return (
-    <div className="text-white border flex flex-col items-center justify-center gap-2 my-5">
-      <div>
+    <div className="text-white flex flex-col items-center justify-center gap-4 my-6">
+      <div className=" flex items-center justify-center gap-3 ">
 
         <button
           onClick={() => handlePrevClick()}
           className={`${currentPage === 1 ? 'opacity-40' : 'opacity-100'}`}
           disabled={currentPage === 1}
         >{"<<<"}</button>
-        <div className="flex gap-2 ">{renderPaginationButtons}</div>
+        
+        <div className="flex gap-2">{renderPaginationButtons}</div>
+        
         <button
           onClick={() => handleNextClick()}
           className={`${currentPage === lastPage ? 'opacity-40' : 'opacity-100'}`}
@@ -99,7 +102,7 @@ const Pagination = ({
       </div>
 
       <div>
-        <input type="text" value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-white hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
+        <input type="text" value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-gray-dark hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
       </div>
     </div>
   )

@@ -44,7 +44,7 @@ export default function About() {
               </div>
               <div className='header-div-style'>
                 <Link to='/skills' className='header-div-link1-style'>go to skills</Link>
-                <Link to='/projects' className="header-div-link2-style">view projects</Link>
+                <Link to='/projects' className="header-div-link1-style">view projects</Link>
               </div>
             </div>
           </div>
@@ -59,10 +59,10 @@ export default function About() {
               </div>
             </div>
             <ul className="my-6 w-full max-w-[550px]">
-              {frontend.map((skill, index) => <li className="about-skills-style" key={index}>{skill}</li>)}
-              {backend.map((skill, index) => <li className="about-skills-style" key={index}>{skill}</li>)}
+              {frontend.map((skill, index) => <li className="about-skills-style bg-gray-dark bg-opacity-30" key={index}>{skill}</li>)}
+              {backend.map((skill, index) => <li className="about-skills-style " key={index}>{skill}</li>)}
               {dataAnalysis.map((skill, index) => <li className="about-skills-style" key={index}>{skill}</li>)}
-              {productDesign.map((skill, index) => <li className="about-skills-style" key={index}>{skill}</li>)}
+              {productDesign.map((skill, index) => <li className="about-skills-style bg-gray-dark bg-opacity-30" key={index}>{skill}</li>)}
             </ul>
           </div>
         </article>
