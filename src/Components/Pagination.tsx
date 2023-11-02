@@ -24,18 +24,18 @@ const Pagination = ({
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(minPageNumberLimitValue)
 
   let pages: any[] = []
-
-  for (let i = 1; i <= Math.ceil(totalPosts / postPerPage); i++) {
+  const lastPage = Math.ceil(totalPosts / postPerPage)
+  for (let i = 1; i <= lastPage; i++) {
     pages.push(i)
   }
 
-  const renderPaginationButtons = pages.map((page, index) => {
+  const renderPaginationButtons = pages.map((page, i) => {
     if (page < maxPageNumberLimit + 1 && page > minPageNumberLimit) {
       return (
         <button
-          key={index}
+          key={i}
           onClick={() => handleButtonClick(page)}
-          className={`${page === currentPage ? 'text-chocolate bg-transparent' : ''}hover:text-chocolate transition-all duration-500 border mx-[0.4rem] p-1`} >{page}</button>
+          className={`${page === currentPage ? 'text-chocolate bg-transparent' : ''}hover:text-brown transition-all duration-500 border rounded-md p-1`} >{page}</button>
       )
     }
   })
@@ -62,17 +62,42 @@ const Pagination = ({
     }
   }
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value)
+
+    if (isNaN(value)) {
+      setCurrentPage(1)
+    }
+
+    if (value >= lastPage) {
+      setCurrentPage(lastPage)
+    }
+
+    if (value <= 0) {
+      setCurrentPage(1)
+    }
+
+    setCurrentPage(value)
+  }
+
   return (
-    <div className="text-white h-16 flex items-center justify-center my-5">
+    <div className="text-white h-16 border flex items-center justify-center gap-2 my-5">
       <button
         onClick={() => handlePrevClick()}
-        className={`${currentPage === 1 ? 'hidden' : 'inline'}`}
-      >prev</button>
-      {renderPaginationButtons}
+        className={`${currentPage === 1 ? 'opacity-40' : 'opacity-100'}`}
+        disabled={currentPage === 1}
+      >{"<<<"}</button>
+      <div className="flex flex-col items-center justify-center gap-3">
+        <div className="flex gap-2 ">{renderPaginationButtons}</div>
+        <div>
+          <input type="text" value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-white hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
+        </div>
+      </div>
       <button
         onClick={() => handleNextClick()}
-        className={`${currentPage === 10 ? 'hidden' : 'inline'}`}
-      >next</button>
+        className={`${currentPage === lastPage ? 'opacity-40' : 'opacity-100'}`}
+        disabled={currentPage === lastPage}
+      >{">>>"}</button>
     </div>
   )
 }

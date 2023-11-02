@@ -1,4 +1,4 @@
-import { Key, useState } from 'react'
+import { Key, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
 import Pagination from '../components/Pagination'
@@ -32,11 +32,13 @@ export default function useDisplayRepos(repos: any) {
     const searchFilter = repos.filter((r: any) => r.projectName.toLowerCase().includes(searchValue.toLowerCase()))
 
     const displayedRepos = languageFilter ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
-    
-    const languages = repos.map((r:any) => r.language).sort()
-    // const languages = getLanguages.reduce((r:any) => r.language)
 
-    const repoElements = displayedRepos.map((repo: any) => (
+    const languages = repos.map((r: any) => r.language).sort()
+    // const languages = getLanguages.reduce((r:any) => r.language)
+    console.log(searchParams);
+
+
+    const repoElements = useMemo(()=> displayedRepos.map((repo: any) => (
         <div key={repo.id} className="w-[99%] min-w-[300px] text-gray-light max-w-[350px] min-h-[400px] p-2 shadow shadow-gray rounded-md transition-all duration-300" >
             <picture className='w-full p-4 block'>
                 <img src={image} alt="portfolio logo" className='w-full h-[35vh] rounded transition-all duration-300' />
@@ -60,7 +62,7 @@ export default function useDisplayRepos(repos: any) {
                 <a href={repo.html} target="_blank" rel="noreferrer" className='hover:border rounded hover:text-chocolate hover:bg-transparent transition-all duration-500 px-2 py-1 shadow bg-white text-black'>view source code</a>
             </div>
         </div>
-    ));
+    )), [repos])
 
     return (
         <div className="w-full flex flex-col items-center justify-center">
@@ -84,11 +86,11 @@ export default function useDisplayRepos(repos: any) {
                     >
                         {
 
-                            languages.map((lang: string, index: number) => (
+                            languages.map((l: string, i: number) => (
                                 <option
-                                    key={index}
-                                    value={lang.toLowerCase()}
-                                >{lang.toLowerCase()}</option>))
+                                    key={i}
+                                    value={l.toLowerCase()}
+                                >{l.toLowerCase()}</option>))
                         }
                     </select>
 
