@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { Key, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
 import Pagination from '../components/Pagination'
-import { languages } from '../lib'
 
 export default function useDisplayRepos(repos: any) {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -33,6 +32,9 @@ export default function useDisplayRepos(repos: any) {
     const searchFilter = repos.filter((r: any) => r.projectName.toLowerCase().includes(searchValue.toLowerCase()))
 
     const displayedRepos = languageFilter ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
+    
+    const languages = repos.map((r:any) => r.language).sort()
+    // const languages = getLanguages.reduce((r:any) => r.language)
 
     const repoElements = displayedRepos.map((repo: any) => (
         <div key={repo.id} className="w-[99%] min-w-[300px] text-gray-light max-w-[350px] min-h-[400px] p-2 shadow shadow-gray rounded-md transition-all duration-300" >
@@ -82,7 +84,7 @@ export default function useDisplayRepos(repos: any) {
                     >
                         {
 
-                            languages.map((lang, index) => (
+                            languages.map((lang: string, index: number) => (
                                 <option
                                     key={index}
                                     value={lang.toLowerCase()}
