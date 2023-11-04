@@ -97,7 +97,7 @@
         @apply p-8 w-full flex flex-col items-center justify-center mt-2
     }
     .footer-div-style {
-        @apply w-[97%] container px-4 flex flex-col items-center justify-center sm:justify-between sm:flex-row gap-2
+        @apply w-[97%] container px-4 flex flex-col items-center justify-center sm:justify-between gap-3
     }
     .footer-ul1-style {
         @apply capitalize w-fit h-[100px] flex flex-col justify-center items-start gap-2

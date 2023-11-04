@@ -1,7 +1,8 @@
 import { socials } from "../lib/socials"
-import { BsHouse, BsPhone } from 'react-icons/bs'
+import { BsMailbox, BsPhone } from 'react-icons/bs'
 import { FontAwesomeIcon } from "fontawesom"
 import { MdEditLocation } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     const year = new Date().getFullYear()
@@ -20,14 +21,14 @@ export default function Footer() {
 
                 <ul className="footer-ul1-style">
                     <h1 className="flex items-center gap-2 font-bold text-2xl font-sans"><MdEditLocation /> <span>Location</span></h1>
-                    <li className="footer-ul1-li1-style"><BsHouse /> <span className="ml-1">uyo, akwa ibom state</span></li>
+                    <li className="footer-ul1-li1-style"><BsMailbox /> <span className="ml-1">crushclever1@gmail.com</span></li>
                     <li className="footer-ul1-li1-style"><BsPhone /> <span className="ml-1">08113530038</span></li>
                 </ul>
 
-                <ul className="flex justify-center">{displaySocials}</ul>
+                <ul className="flex justify-center gap-4"> <Link to="connect" className=" ml-5 hover:text-white">Let&apos;s connect {'>>>'}</Link> {displaySocials}</ul>
             </div>
 
-            <samp className="footer-samp1-style">&#169; {year} <samp>Portfolio</samp> made by <samp className="text-blue"><a href="#" className="hover:underline">BlueArea</a></samp> Technologies</samp>
+            <samp className="footer-samp1-style">&#169; {year} | Clever Akanimoh Portfolio</samp>
         </footer>
     )
 }
