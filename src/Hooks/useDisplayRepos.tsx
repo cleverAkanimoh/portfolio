@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
 import Pagination from '../components/Pagination'
@@ -29,7 +29,7 @@ export default function useDisplayRepos(repos: any) {
 
     const languageFilter = searchParams.get("language");
     const languageFilterFn = repos.filter((r: any) => r.language === languageFilter)
-    const searchFilter = repos.filter((r: any) => r.projectName.toLowerCase().includes(searchValue.toLowerCase()))
+    const searchFilter = repos.filter((r: any) => r.name.toLowerCase().includes(searchValue.toLowerCase()))
 
     const displayedRepos = languageFilter ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
 
@@ -39,34 +39,34 @@ export default function useDisplayRepos(repos: any) {
     //     }
     //     return values
     // })
-    
+
     let languages = repos.map((r: any) => r.language)
 
-    const repoElements = useMemo(() => displayedRepos.map((repo: any) => (
+    const repoElements = displayedRepos.map((repo: any) => (
         <div key={repo.id} className="w-[99%] min-w-[300px] text-gray-light max-w-[350px] min-h-[400px] p-2 shadow shadow-gray rounded-md transition-all duration-300" >
             <picture className='w-full p-4 block'>
                 <img src={image} alt="portfolio logo" className='w-full h-[35vh] rounded transition-all duration-300' />
             </picture>
             <div className='flex items-center justify-between py-4 capitalize'>
-                <h2 className='text-2xl text-blue font-semibold'>{repo.projectName}</h2>
+                <h2 className='text-2xl text-blue font-semibold'>{repo.name.substring(0,15)}</h2>
                 <span className='text-base text-yellow pb-2'>{repo.language}</span>
             </div>
 
             <p className='text-base font-medium text-justify py-3'>{`${repo?.projectDesc || 'this repo has no description check source code for README.md'}`.substring(0, readMore ? 150 : undefined)} <button className={`${readMore ? "text-blue" : "text-red-600"}`} onClick={() => setReadMore(prev => !prev)}>{readMore ? "... read more" : "read less"}</button></p>
 
             <div className='grid grid-cols-2 py-1 text-base capitalize'>
-                <span>Date created: {repo.created}</span>
-                <span>last updated: {repo.updated}</span>
-                <span>visibility: {repo.projectType}</span>
-                <span>Framework: {repo.framework}</span>
+                <span>Date created: {repo.created_at.toLocaleString()}</span>
+                <span>last updated: {repo.updated_at.toLocaleString()}</span>
+                <span>visibility: {repo.visbility}</span>
+                <span>branch: {repo.default_branch}</span>
             </div>
 
             <div className='flex items-center justify-between h-16 capitalize text-sm'>
-                <a href={repo.liveLink} target="_blank" rel="noreferrer" className='hover:border rounded hover:text-chocolate hover:bg-transparent transition-all duration-500 px-2 py-1 shadow bg-white text-black'>view live</a>
-                <a href={repo.html} target="_blank" rel="noreferrer" className='hover:border rounded hover:text-chocolate hover:bg-transparent transition-all duration-500 px-2 py-1 shadow bg-white text-black'>view source code</a>
+                {repo.has_pages && <a href={`https:${repo.owner.login}.github.io/${repo.name}/`} target="_blank" rel="noreferrer" className='hover:border rounded hover:text-chocolate hover:bg-transparent transition-all duration-500 px-2 py-1 shadow bg-white text-black'>view live</a>}
+                <a title='go to github repository' href={repo.html_url} target="_blank" rel="noreferrer" className='hover:border rounded hover:text-chocolate hover:bg-transparent transition-all duration-500 px-2 py-1 shadow bg-white text-black'>view source code</a>
             </div>
         </div>
-    )), [repos])
+    ))
 
     return (
         <div className="w-full flex flex-col items-center justify-center">
@@ -88,13 +88,14 @@ export default function useDisplayRepos(repos: any) {
                         className='capitalize text-gray hover:text-chocolate text-bold text-lg border-0 bg-transparent rounded-md px-2 py-2 mx-1 my-2 outline-0'
                         onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { handleFilterChange(`language`, `${e.target.value}`); setSearchValue("") }}
                     >
+                    <option value="">filter</option>
                         {
 
                             languages.map((r: string, i: number) => (
                                 <option
                                     key={i}
-                                    value={r.toLowerCase()}
-                                >{r.toLowerCase()}</option>))
+                                    value={r}
+                                >{r}</option>))
                         }
                     </select>
 

@@ -1,7 +1,8 @@
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, repos, animateSection as s } from '../lib';
+import { animateHeader as h, animateSection as s } from '../lib';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useDisplayRepos from '../Hooks/useDisplayRepos';
+import repos from "../content.json"
 
 export default function Projects() {
 
