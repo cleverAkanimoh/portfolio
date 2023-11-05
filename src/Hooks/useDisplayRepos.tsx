@@ -5,11 +5,12 @@ import Pagination from '../components/Pagination'
 
 export default function useDisplayRepos(repos: any) {
     const [searchParams, setSearchParams] = useSearchParams()
-    
+
     const [searchValue, setSearchValue] = useState("")
 
+    const [totalPosts, setTotalPosts] = useState(repos.length)
     const [currentPage, setCurrentPage] = useState(1)
-    const postsPerPage = 10
+    const postsPerPage = 9
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPostIndex = lastPostIndex - postsPerPage
@@ -26,11 +27,14 @@ export default function useDisplayRepos(repos: any) {
         });
     }
 
-    const languageFilter = searchParams.get("language");
-    const languageFilterFn = repos.filter((r: any) => r.language === languageFilter)
+    console.log("repos start", repos.length);
+
+    const searchParamsLang = searchParams.get("language");
+    
+    const languageFilterFn = repos.filter((r: any) => r.language === searchParamsLang)
     const searchFilter = repos.filter((r: any) => r.name.toLowerCase().includes(searchValue.toLowerCase()))
 
-    const displayedRepos = languageFilter ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
+    const displayedRepos = searchParamsLang ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
 
     // const languages = repos.reduce((values: any, item: any) => {
     //     if (!values.has(item.language)) {
@@ -39,7 +43,15 @@ export default function useDisplayRepos(repos: any) {
     //     return values
     // })
 
-    let languages = repos.map((r: any) => r.language)
+    // let getLanguages = new Set(repos.map((r: any) => r.language))
+
+    // const languages:string[] | unknown[] = Array.from(new Set(repos.map((r: any) => r.language)));
+
+    const languages = ['JavaScript', 'CSS', 'HTML', 'TypeScript', 'Python']
+
+    console.log("lang", languageFilterFn.length);
+    console.log("search", searchFilter.length);
+    console.log("repos", repos.length);
 
     const repoElements = displayedRepos.map((repo: any) => (
         <div key={repo.id} className="w-[99%] min-w-[300px] text-gray-light max-w-[350px] min-h-[400px] p-2 shadow shadow-gray rounded-md transition-all duration-300" >
@@ -47,7 +59,7 @@ export default function useDisplayRepos(repos: any) {
                 <img src={image} alt="portfolio logo" className='w-full h-[35vh] rounded transition-all duration-300' />
             </picture>
             <div className='flex items-center justify-between py-4 capitalize'>
-                <h2 className='text-2xl text-blue font-semibold' title={repo.name}>{repo.name.substring(0,20)}</h2>
+                <h2 className='text-2xl text-blue font-semibold' title={repo.name}>{repo.name.substring(0, 25)}</h2>
                 <span className='text-base text-yellow pb-2'>{repo.language}</span>
             </div>
 
@@ -85,7 +97,7 @@ export default function useDisplayRepos(repos: any) {
                         className='capitalize text-gray hover:text-chocolate text-bold text-lg border-0 bg-transparent rounded-md px-2 py-2 mx-1 my-2 outline-0'
                         onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { handleFilterChange(`language`, `${e.target.value}`); setSearchValue("") }}
                     >
-                    <option value="">filter</option>
+                        <option value="">filter</option>
                         {
 
                             languages.map((r: string, i: number) => (
@@ -96,7 +108,7 @@ export default function useDisplayRepos(repos: any) {
                         }
                     </select>
 
-                    {languageFilter ? (
+                    {searchParamsLang ? (
                         <button onClick={() => handleFilterChange("language", null)}
                             className="clear-filter"
                         >
@@ -111,7 +123,7 @@ export default function useDisplayRepos(repos: any) {
             </div>
 
             <Pagination
-                totalPosts={repos.length}
+                totalPosts={totalPosts}
                 postPerPage={postsPerPage}
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage}
