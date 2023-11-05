@@ -42,7 +42,7 @@ export default function useDisplayRepos(repos: any) {
         if (languageFilterFn.length > 0) {
             setTotalPosts(languageFilterFn.length)
         }
-        if (searchFilter !== "") {
+        if (searchFilter != "") {
             setTotalPosts(searchFilter.length)
             setIsFilter(false)
             setIsSearch(false)
@@ -131,12 +131,12 @@ export default function useDisplayRepos(repos: any) {
                 </div>
             </div>
 
-            {isSearch || isFilter ? <p>found {isSearch && searchFilter.length}{isFilter && languageFilterFn.length}  results for {isFilter && searchParamsLang} {isSearch && searchValue}</p> : ""}
+            {isFilter ? <p>found {isSearch && searchFilter.length}{isFilter && languageFilterFn.length}  results for {isFilter && searchParamsLang} {isSearch && searchValue}</p> : ""}
 
             {/* {isFilter} */}
 
             <div className="w-full min-h-[400px] grid place-items-center gap-10 md:grid-cols-2 lg:grid-cols-3">
-                {displayedRepos ? repoElements : <span>no project matching your filter</span>}
+                {repoElements}
             </div>
 
             <Pagination
