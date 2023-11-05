@@ -2,9 +2,6 @@ import { motion as m } from 'framer-motion'
 import { animateHeader as h, projectsArr, animateSection as s } from '../lib';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useDisplayRepos from '../Hooks/useDisplayRepos';
-// import { Await } from 'react-router-dom';
-import { Suspense } from 'react';
-import Loading from '../components/Loading';
 
 export default function Projects() {
 

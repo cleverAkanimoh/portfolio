@@ -55,7 +55,7 @@ export default function Home() {
           </TrackVisibility>
 
           <div className='header-div-style'>
-            <button className="bg-saddle-brown hover:bg-gradient-to-tr from-saddle-brown from-70% to-yellow p-2 hover:scale-[1.04] text-white rounded-md transition-all duration-300" >view my CV</button>
+            <button onClick={() => setShowCv(true)} className="bg-saddle-brown hover:bg-gradient-to-tr from-saddle-brown from-70% to-yellow p-2 hover:scale-[1.04] text-white rounded-md transition-all duration-300" >view my CV</button>
 
             <Link to="connect" className='header-div-link1-style'>let's Connect <BsArrowRight className='pl-1' /></Link>
 

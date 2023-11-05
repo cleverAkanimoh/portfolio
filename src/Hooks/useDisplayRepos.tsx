@@ -33,12 +33,16 @@ export default function useDisplayRepos(repos: any) {
 
     const displayedRepos = languageFilter ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
 
-    const languages = repos.map((r: any) => r.language).sort()
-    // const languages = getLanguages.reduce((r:any) => r.language)
-    console.log(searchParams);
+    // const languages = repos.reduce((values: any, item: any) => {
+    //     if (!values.has(item.language)) {
+    //         values.push(item.language);
+    //     }
+    //     return values
+    // })
+    
+    let languages = repos.map((r: any) => r.language)
 
-
-    const repoElements = useMemo(()=> displayedRepos.map((repo: any) => (
+    const repoElements = useMemo(() => displayedRepos.map((repo: any) => (
         <div key={repo.id} className="w-[99%] min-w-[300px] text-gray-light max-w-[350px] min-h-[400px] p-2 shadow shadow-gray rounded-md transition-all duration-300" >
             <picture className='w-full p-4 block'>
                 <img src={image} alt="portfolio logo" className='w-full h-[35vh] rounded transition-all duration-300' />
@@ -86,11 +90,11 @@ export default function useDisplayRepos(repos: any) {
                     >
                         {
 
-                            languages.map((l: string, i: number) => (
+                            languages.map((r: string, i: number) => (
                                 <option
                                     key={i}
-                                    value={l.toLowerCase()}
-                                >{l.toLowerCase()}</option>))
+                                    value={r.toLowerCase()}
+                                >{r.toLowerCase()}</option>))
                         }
                     </select>
 
