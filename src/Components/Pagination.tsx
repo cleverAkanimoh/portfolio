@@ -102,7 +102,7 @@ const Pagination = ({
       </div>
 
       <div>
-        <input type="text" value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-gray-dark hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
+        <input type="text" readOnly value={currentPage} onChange={handleInputChange} className="w-10 h-auto p-1 text-center rounded-lg bg-transparent border border-gray-dark hover:border-brown focus:border-saddle-brown focus:outline-0 transition-all duration-300" /> / <span>{lastPage}</span>
       </div>
     </div>
   )

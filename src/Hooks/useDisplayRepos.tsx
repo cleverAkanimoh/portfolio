@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
 import Pagination from '../components/Pagination'
@@ -7,6 +7,8 @@ export default function useDisplayRepos(repos: any) {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [searchValue, setSearchValue] = useState("")
+    const [isSearch, setIsSearch] = useState(false)
+    const [isFilter, setIsFilter] = useState(false)
 
     const [totalPosts, setTotalPosts] = useState(repos.length)
     const [currentPage, setCurrentPage] = useState(1)
@@ -30,11 +32,23 @@ export default function useDisplayRepos(repos: any) {
     console.log("repos start", repos.length);
 
     const searchParamsLang = searchParams.get("language");
-    
+
     const languageFilterFn = repos.filter((r: any) => r.language === searchParamsLang)
     const searchFilter = repos.filter((r: any) => r.name.toLowerCase().includes(searchValue.toLowerCase()))
 
     const displayedRepos = searchParamsLang ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
+
+    useEffect(() => {
+        if (languageFilterFn.length > 0) {
+            setTotalPosts(languageFilterFn.length)
+        }
+        if (searchFilter !== "") {
+            setTotalPosts(searchFilter.length)
+            setIsFilter(false)
+            setIsSearch(false)
+        }
+    }, [searchFilter, languageFilterFn])
+
 
     // const languages = repos.reduce((values: any, item: any) => {
     //     if (!values.has(item.language)) {
@@ -86,7 +100,7 @@ export default function useDisplayRepos(repos: any) {
                         className='min-w-[200px] max-w-[500px] border-0 focus:outline-0 bg-transparent p-1'
                         placeholder='search by project name'
                         value={searchValue}
-                        onChange={(e) => { setSearchValue(e.target.value); handleFilterChange("language", null) }}
+                        onChange={(e) => { setSearchValue(e.target.value); setIsSearch(true); setIsFilter(false); handleFilterChange("language", null) }}
                     />
                 </div>
 
@@ -95,9 +109,8 @@ export default function useDisplayRepos(repos: any) {
                         name="language"
                         id="language"
                         className='capitalize text-gray hover:text-chocolate text-bold text-lg border-0 bg-transparent rounded-md px-2 py-2 mx-1 my-2 outline-0'
-                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { handleFilterChange(`language`, `${e.target.value}`); setSearchValue("") }}
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => { setIsFilter(true); setIsSearch(false); handleFilterChange(`language`, `${e.target.value}`); setSearchValue("") }}
                     >
-                        <option value="">filter</option>
                         {
 
                             languages.map((r: string, i: number) => (
@@ -109,7 +122,7 @@ export default function useDisplayRepos(repos: any) {
                     </select>
 
                     {searchParamsLang ? (
-                        <button onClick={() => handleFilterChange("language", null)}
+                        <button onClick={() => { handleFilterChange("language", null); setIsSearch(false); setIsFilter(false) }}
                             className="clear-filter"
                         >
                             Clear filter
@@ -117,6 +130,10 @@ export default function useDisplayRepos(repos: any) {
                     ) : null}
                 </div>
             </div>
+
+            {isSearch || isFilter ? <p>found {isSearch && searchFilter.length}{isFilter && languageFilterFn.length}  results for {isFilter && searchParamsLang} {isSearch && searchValue}</p> : ""}
+
+            {/* {isFilter} */}
 
             <div className="w-full min-h-[400px] grid place-items-center gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {displayedRepos ? repoElements : <span>no project matching your filter</span>}
