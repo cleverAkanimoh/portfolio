@@ -64,7 +64,7 @@ const Pagination = ({
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value)
+    const value = parseInt(e.target.value)
 
     if (isNaN(value)) {
       setCurrentPage(1)
