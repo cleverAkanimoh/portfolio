@@ -39,7 +39,7 @@ export default function useDisplayRepos(repos: any) {
     const displayedRepos = searchParamsLang ? languageFilterFn : searchValue.length > 0 ? searchFilter : shownPosts
 
     useEffect(() => {
-        if (languageFilterFn.length > 0) {
+        if (languageFilterFn) {
             setTotalPosts(languageFilterFn.length)
         }
         if (searchFilter != "") {
@@ -131,12 +131,11 @@ export default function useDisplayRepos(repos: any) {
                 </div>
             </div>
 
-            {isFilter ? <p>found {isSearch && searchFilter.length}{isFilter && languageFilterFn.length}  results for {isFilter && searchParamsLang} {isSearch && searchValue}</p> : ""}
-
-            {/* {isFilter} */}
+            {isSearch && <p className='mb-6 px-2 self-start'>found {isSearch && searchFilter.length}{isFilter && languageFilterFn.length}  results for {isFilter && searchParamsLang} {isSearch && searchValue}</p>}
+            {isFilter && <p className='mb-6 px-2 self-start'>found {isSearch && searchFilter.length}{isFilter && languageFilterFn.length}  results for {isFilter && searchParamsLang} {isSearch && searchValue}</p>}
 
             <div className="w-full min-h-[400px] grid place-items-center gap-10 md:grid-cols-2 lg:grid-cols-3">
-                {repoElements}
+                {displayedRepos ? repoElements : <span>no project matching your filter</span>}
             </div>
 
             <Pagination
