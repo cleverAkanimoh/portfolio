@@ -1,4 +1,4 @@
-export { default as projectsArr } from "./projects";
+export { repos } from "./projects";
 
 export { socials } from "./socials";
 

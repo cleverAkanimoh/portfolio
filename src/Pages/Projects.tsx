@@ -1,11 +1,11 @@
 import { motion as m } from 'framer-motion'
-import { animateHeader as h, projectsArr, animateSection as s } from '../lib';
+import { animateHeader as h, repos, animateSection as s } from '../lib';
 import { useWindowTitle } from '../Hooks/useWindowTitle';
 import useDisplayRepos from '../Hooks/useDisplayRepos';
 
 export default function Projects() {
 
-  const displayRepos = useDisplayRepos(projectsArr)
+  const displayRepos = useDisplayRepos(repos)
 
   useWindowTitle('View all of my projects | Clever Akanimoh')
 

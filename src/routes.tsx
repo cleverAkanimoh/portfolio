@@ -27,7 +27,6 @@ export default (
         <Route
             path="projects"
             element={<Projects />}
-            errorElement={<ErrorPage />}
         />
 
         <Route

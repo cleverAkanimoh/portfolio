@@ -1,4 +1,4 @@
-import { Key, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import image from '../assets/images/logo.png'
 import Pagination from '../components/Pagination'
@@ -10,7 +10,7 @@ export default function useDisplayRepos(repos: any) {
     const [searchValue, setSearchValue] = useState("")
 
     const [currentPage, setCurrentPage] = useState(1)
-    const postsPerPage = 3
+    const postsPerPage = 10
 
     const lastPostIndex = currentPage * postsPerPage
     const firstPostIndex = lastPostIndex - postsPerPage
