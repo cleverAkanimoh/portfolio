@@ -5,8 +5,7 @@ import Pagination from '../components/Pagination'
 
 export default function useDisplayRepos(repos: any) {
     const [searchParams, setSearchParams] = useSearchParams()
-
-    const [readMore, setReadMore] = useState(true)
+    
     const [searchValue, setSearchValue] = useState("")
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -48,14 +47,14 @@ export default function useDisplayRepos(repos: any) {
                 <img src={image} alt="portfolio logo" className='w-full h-[35vh] rounded transition-all duration-300' />
             </picture>
             <div className='flex items-center justify-between py-4 capitalize'>
-                <h2 className='text-2xl text-blue font-semibold' title={repo.name}>{repo.name.substring(0,15)}</h2>
+                <h2 className='text-2xl text-blue font-semibold' title={repo.name}>{repo.name.substring(0,20)}</h2>
                 <span className='text-base text-yellow pb-2'>{repo.language}</span>
             </div>
 
             <div className='grid grid-cols-2 py-1 text-base capitalize'>
-                <span>Date created: {repo.created_at.toLocaleString()}</span>
-                <span>last updated: {repo.updated_at.toLocaleString()}</span>
-                <span>visibility: {repo.visbility}</span>
+                <span>Date created: {repo.created_at}</span>
+                <span>last updated: {repo.updated_at}</span>
+                <span>visibility: {repo.visibility}</span>
                 <span>branch: {repo.default_branch}</span>
             </div>
 
