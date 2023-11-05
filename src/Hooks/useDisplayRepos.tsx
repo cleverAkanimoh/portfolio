@@ -48,11 +48,9 @@ export default function useDisplayRepos(repos: any) {
                 <img src={image} alt="portfolio logo" className='w-full h-[35vh] rounded transition-all duration-300' />
             </picture>
             <div className='flex items-center justify-between py-4 capitalize'>
-                <h2 className='text-2xl text-blue font-semibold'>{repo.name.substring(0,15)}</h2>
+                <h2 className='text-2xl text-blue font-semibold' title={repo.name}>{repo.name.substring(0,15)}</h2>
                 <span className='text-base text-yellow pb-2'>{repo.language}</span>
             </div>
-
-            <p className='text-base font-medium text-justify py-3'>{`${repo?.projectDesc || 'this repo has no description check source code for README.md'}`.substring(0, readMore ? 150 : undefined)} <button className={`${readMore ? "text-blue" : "text-red-600"}`} onClick={() => setReadMore(prev => !prev)}>{readMore ? "... read more" : "read less"}</button></p>
 
             <div className='grid grid-cols-2 py-1 text-base capitalize'>
                 <span>Date created: {repo.created_at.toLocaleString()}</span>
